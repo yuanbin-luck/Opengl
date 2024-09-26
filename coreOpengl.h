@@ -9,6 +9,9 @@
 #include "./glm/include/gtc/type_ptr.hpp"
 
 
+#include <iostream>
+using namespace std;
+
 #if _DEBUG
 
 #pragma comment(lib, "C:/Tools/Opengl/glad/lib/gladd.lib")
