@@ -30,6 +30,21 @@
     <ClCompile Include="GLObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="GLNode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GLGeometry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GLMaterial.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GLTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GLShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -44,5 +59,24 @@
     <ClInclude Include="GLObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GLNode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GLGeometry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GLMaterial.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GLShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vs.glsl" />
+    <None Include="fs.glsl" />
   </ItemGroup>
 </Project>

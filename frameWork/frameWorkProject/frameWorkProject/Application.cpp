@@ -73,11 +73,18 @@ GL::Application::~Application()
 
 }
 
+#include "GLShader.h"
+#include "GLGeometry.h"
 void GL::Application::exec()
 {
+	GLShader* shader = new GLShader("./vs.glsl","./fs.glsl");
+	GLGeometry* geo = GLGeometry::createSurface(0);
+
 	while (!glfwWindowShouldClose(m_window))
 	{
-		glRectd(0, 0, 0.5, 0.5);
+		//glRectd(0, 0, 0.5, 0.5);
+		shader->use();
+		glDrawElements(GL_TRIANGLES, geo->m_number, GL_UNSIGNED_INT, 0);
 
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);

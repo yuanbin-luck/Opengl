@@ -143,15 +143,29 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="frameWorkProject.cpp" />
+    <ClCompile Include="GLGeometry.cpp" />
+    <ClCompile Include="GLMaterial.cpp" />
+    <ClCompile Include="GLNode.cpp" />
     <ClCompile Include="GLObject.cpp" />
     <ClCompile Include="GLRender.cpp" />
     <ClCompile Include="GLScense.cpp" />
+    <ClCompile Include="GLShader.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="GLGeometry.h" />
+    <ClInclude Include="GLMaterial.h" />
+    <ClInclude Include="GLNode.h" />
     <ClInclude Include="GLObject.h" />
     <ClInclude Include="GLRender.h" />
     <ClInclude Include="GLScense.h" />
+    <ClInclude Include="GLShader.h" />
+    <ClInclude Include="GLTexture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fs.glsl" />
+    <None Include="vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
