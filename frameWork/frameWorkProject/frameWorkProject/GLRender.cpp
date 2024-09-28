@@ -30,31 +30,26 @@ void GL::GLRender::render(GLuint frame, GLScense* scense)
 	{
 		scense->m_global->use();
 	}
-
 	renderChilds(scense);
-
 }
 
 void GL::GLRender::renderChilds(GLObject* child)
 {
 	GLGeometry* geometry = child->getGeometry();
-	if (!geometry) return;
-	
-	if (GLMaterial* material = child->getMaterial())
+	if (geometry)
 	{
-		material->use();
-		//float t = glfwGetTime();
-		//glm::mat4 p = glm::perspective(45.0f, 1.0f, 0.01f, 1000.0f);
-		//glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-		//glm::mat4 m = glm::rotate(glm::mat4(1.0f), t, glm::vec3(0, 1, 0));
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		//material->m_shader->setInt("sampler", 0);
-		//material->m_shader->setMat4("projection", p);
-		//material->m_shader->setMat4("view", v);
-		//material->m_shader->setMat4("model", m);
+		if (GLMaterial* material = child->getMaterial())
+		{
+			material->use(NULL);
+		}
+
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
 	}
 
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
+	for (auto& node : child->m_childs)
+	{
+		renderChilds(node);
+	}
 }

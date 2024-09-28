@@ -48,6 +48,9 @@
     <ClCompile Include="GLCallBack.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="GLCamera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -78,6 +81,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GLCallBack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GLCamera.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

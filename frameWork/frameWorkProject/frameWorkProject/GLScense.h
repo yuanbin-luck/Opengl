@@ -3,6 +3,7 @@
 
 namespace GL {
 
+	class GLShader;
 	class GLRender;
 	class GLScense :public GLObject
 	{
@@ -13,6 +14,6 @@ namespace GL {
 
 	private:
 		friend class GLRender;
-		GLShader* m_global{nullptr};
+		GLShader* m_global;
 	};
 }

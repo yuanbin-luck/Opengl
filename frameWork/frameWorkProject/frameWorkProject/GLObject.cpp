@@ -83,7 +83,7 @@ void GL::GLObject::setScale(const glm::vec3& scale)
 void GL::GLObject::addChild(GLObject* child)
 {
     auto ret = std::find(m_childs.begin(), m_childs.end(), child);
-    if (ret == m_childs.end())
+    if (ret != m_childs.end())
     {
         return;
     }

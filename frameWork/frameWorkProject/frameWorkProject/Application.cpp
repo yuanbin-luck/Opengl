@@ -3,7 +3,10 @@
 #include "GLShader.h"
 #include "GLGeometry.h"
 #include "GLTexture.h"
-
+#include "GLRender.h"
+#include "GLScense.h"
+#include "GLNode.h"
+#include "GLMaterial.h"
 
 // 包含windows的头文件
 #include <windows.h>
@@ -71,6 +74,10 @@ GL::Application::Application(int width, int height, const char* title):m_window(
 	//	SetVSyncState(false);
 	//}
 
+	m_render = new GLRender();
+	m_scense = new GLScense(nullptr);
+	addRoot(new GLNode(GLGeometry::createSphere(1,60), new GLMaterial(NULL,new GLTexture("./aasert/1.jpg",0))));
+
 	shader = new GLShader("./assert/vs.glsl", "./assert/fs.glsl");
 	geo = GLGeometry::createSphere(1,60);
 	texture = new GLTexture("./assert/1.jpg",0);
@@ -85,29 +92,31 @@ void GL::Application::exec()
 {
 	while (!glfwWindowShouldClose(m_window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glEnable(GL_DEPTH_TEST);
-		glDepthFunc(GL_LESS);
-
-		shader->use();
-		texture->bind();
-		float t =  glfwGetTime();
-		glm::mat4 p = glm::perspective(45.0f, 1.0f,0.01f,1000.0f);
-		glm::mat4 v = glm::lookAt(glm::vec3(0,0,3), glm::vec3(0,0,0),glm::vec3(0,1,0));
-		glm::mat4 m = glm::rotate(glm::mat4(1.0f), t, glm::vec3(0, 1, 0));
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		shader->setInt("sampler", 0);
-		shader->setMat4("projection", p);
-		shader->setMat4("view", v );
-		shader->setMat4("model", m);
-
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
-		glDrawElements(GL_TRIANGLES, geo->m_number, GL_UNSIGNED_INT, 0);
-
+		if (m_render)
+		{
+			m_render->render(0, m_scense);
+		}
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);
 	}
 	glfwTerminate();
 
+}
+
+void GL::Application::addScense(GLScense* scense)
+{
+	if (m_scense)
+	{
+		delete m_scense;
+		m_scense = nullptr;
+	}
+	m_scense = scense;
+}
+
+void GL::Application::addRoot(GLObject* root)
+{
+	if (m_scense)
+	{
+		m_scense->addChild(root);
+	}
 }

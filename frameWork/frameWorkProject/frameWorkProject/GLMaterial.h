@@ -2,9 +2,11 @@
 
 namespace GL {
 
+	class GLCamera;
 	class GLRender;
 	class GLShader;
 	class GLTexture;
+	class GLCallBack;
 	class GLMaterial
 	{
 	public:
@@ -12,17 +14,23 @@ namespace GL {
 
 		~GLMaterial();
 
-		void use();
+		void use(GLCamera* camera);
 
 		void setShader(GLShader* shader);
 
 		void setTexture(GLTexture* texture);
 
+		void setRenderCallBack(GLCallBack* callback);
+
+		GLShader* getShader();
+
+		unsigned int getTextureUnit();
+
 	private:
 		friend class GLRender;
 		GLShader* m_shader; 
 		GLTexture* m_texture;
-
+		GLCallBack* m_callback;
 	};
 
 }
