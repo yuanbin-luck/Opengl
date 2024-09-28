@@ -8,6 +8,7 @@
 
 GL::GLRender::GLRender()
 {
+
 }
 
 GL::GLRender::~GLRender()
@@ -42,10 +43,11 @@ void GL::GLRender::renderChilds(GLObject* child, GLShader* global)
 		{
 			material->use(NULL, global);
 		}
-
+		
 		glBindVertexArray(geometry->m_vao);
-		//glEnable(GL_CULL_FACE);
-		//glCullFace(GL_BACK);
+		glEnable(GL_CULL_FACE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glCullFace(GL_BACK);
 		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 	}

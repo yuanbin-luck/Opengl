@@ -18,14 +18,15 @@ using namespace std;
 
 #if _DEBUG
 
-#pragma comment(lib, "C:/Tools/Opengl/glad/lib/gladd.lib")
-#pragma comment(lib,  "C:/Tools/Opengl/glfw3.4/lib/glfw3d.lib")
-#pragma comment(lib,  "C:/Tools/Opengl/glm/lib/glmd.lib")
+
+#pragma comment(lib,  "./../../../glad/lib/gladd.lib")
+#pragma comment(lib,  "./../../../glfw3.4/lib/glfw3d.lib")
+#pragma comment(lib,  "./../../../glm/lib/glmd.lib")
 #else
 
-#pragma comment(lib, "C:/Tools/Opengl/glad/lib/glad.lib")
-#pragma comment(lib,  "C:/Tools/Opengl/glfw3.4/lib/glfw3.lib")
-#pragma comment(lib,  "C:/Tools/Opengl/glm/lib/glm.lib")
+#pragma comment(lib,  "./../../../glad/lib/glad.lib")
+#pragma comment(lib,  "./../../../glfw3.4/lib/glfw3.lib")
+#pragma comment(lib,  "./../../../glm/lib/glm.lib")
 
 
 #endif

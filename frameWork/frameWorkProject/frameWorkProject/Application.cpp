@@ -74,14 +74,13 @@ GL::Application::Application(int width, int height, const char* title):m_window(
 	//	SetVSyncState(false);
 	//}
 
+	glfwSetWindowSizeCallback(m_window, windowsizefun);
+
+
 	m_render = new GLRender();
 	m_scense = new GLScense(nullptr);
 	addRoot(new GLNode(GLGeometry::createSphere(1,60)
-		, new GLMaterial(new GLShader("./assert/vs.glsl", "./assert/fs.glsl"),new GLTexture("./aasert/1.jpg",0))));
-
-	//shader = new GLShader("./assert/vs.glsl", "./assert/fs.glsl");
-	//geo = GLGeometry::createSphere(1,60);
-	//texture = new GLTexture("./assert/1.jpg",0);
+		, new GLMaterial(new GLShader("./assert/vs.glsl", "./assert/fs.glsl"),new GLTexture("./assert/1.jpg",0))));
 }
 
 GL::Application::~Application()
@@ -120,4 +119,9 @@ void GL::Application::addRoot(GLObject* root)
 	{
 		m_scense->addChild(root);
 	}
+}
+
+void GL::Application::windowsizefun(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }

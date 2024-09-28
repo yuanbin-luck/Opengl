@@ -10,7 +10,6 @@ void GL::GLCallBack::callback(GLCamera* camera, GLMaterial* material, GLShader* 
 	glm::mat4 p = glm::perspective(45.0f, 1.0f, 0.01f, 1000.0f);
 	glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	glm::mat4 m = glm::rotate(glm::mat4(1.0f), t, glm::vec3(0, 1, 0));
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	GLShader* shader = global;
 	if (material->getShader())

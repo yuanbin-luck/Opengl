@@ -23,6 +23,9 @@ namespace GL {
 		void addRoot(GLObject* root);
 
 	private:
+		static void windowsizefun(GLFWwindow* window, int width, int height);
+
+	private:
 		GLFWwindow* m_window;
 		GLRender* m_render;
 		GLScense* m_scense;
