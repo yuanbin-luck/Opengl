@@ -76,11 +76,12 @@ GL::Application::Application(int width, int height, const char* title):m_window(
 
 	m_render = new GLRender();
 	m_scense = new GLScense(nullptr);
-	addRoot(new GLNode(GLGeometry::createSphere(1,60), new GLMaterial(NULL,new GLTexture("./aasert/1.jpg",0))));
+	addRoot(new GLNode(GLGeometry::createSphere(1,60)
+		, new GLMaterial(new GLShader("./assert/vs.glsl", "./assert/fs.glsl"),new GLTexture("./aasert/1.jpg",0))));
 
-	shader = new GLShader("./assert/vs.glsl", "./assert/fs.glsl");
-	geo = GLGeometry::createSphere(1,60);
-	texture = new GLTexture("./assert/1.jpg",0);
+	//shader = new GLShader("./assert/vs.glsl", "./assert/fs.glsl");
+	//geo = GLGeometry::createSphere(1,60);
+	//texture = new GLTexture("./assert/1.jpg",0);
 }
 
 GL::Application::~Application()

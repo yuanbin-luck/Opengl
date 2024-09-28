@@ -13,7 +13,7 @@ GL::GLMaterial::~GLMaterial()
 {
 }
 
-void GL::GLMaterial::use(GLCamera* camera)
+void GL::GLMaterial::use(GLCamera* camera, GLShader* global)
 {
 	if (m_shader)
 	{
@@ -26,7 +26,7 @@ void GL::GLMaterial::use(GLCamera* camera)
 
 	if (m_callback)
 	{
-		m_callback->callback(camera,this);
+		m_callback->callback(camera,this, global);
 	}
 }
 

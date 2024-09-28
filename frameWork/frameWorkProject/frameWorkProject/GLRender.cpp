@@ -30,26 +30,28 @@ void GL::GLRender::render(GLuint frame, GLScense* scense)
 	{
 		scense->m_global->use();
 	}
-	renderChilds(scense);
+	renderChilds(scense, scense->m_global);
 }
 
-void GL::GLRender::renderChilds(GLObject* child)
+void GL::GLRender::renderChilds(GLObject* child, GLShader* global)
 {
 	GLGeometry* geometry = child->getGeometry();
 	if (geometry)
 	{
 		if (GLMaterial* material = child->getMaterial())
 		{
-			material->use(NULL);
+			material->use(NULL, global);
 		}
 
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		glBindVertexArray(geometry->m_vao);
+		//glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
 		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
 	}
 
 	for (auto& node : child->m_childs)
 	{
-		renderChilds(node);
+		renderChilds(node, global);
 	}
 }

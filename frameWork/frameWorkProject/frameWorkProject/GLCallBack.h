@@ -3,12 +3,12 @@
 namespace GL {
 
 	class GLCamera;
-	class GLMaterial;
+	class GLShader;
 	class GLMaterial;
 	class GLCallBack
 	{
 	public:
-		virtual void callback(GLCamera* camera, GLMaterial* material);
+		virtual void callback(GLCamera* camera, GLMaterial* material, GLShader* global);
 
 	};
 

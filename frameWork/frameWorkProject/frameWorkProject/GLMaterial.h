@@ -14,7 +14,7 @@ namespace GL {
 
 		~GLMaterial();
 
-		void use(GLCamera* camera);
+		void use(GLCamera* camera, GLShader* global);
 
 		void setShader(GLShader* shader);
 

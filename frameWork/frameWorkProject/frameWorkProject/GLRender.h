@@ -4,6 +4,7 @@
 
 namespace GL {
 	
+	class GLShader;
 	class GLObject;
 	class GLScense;
 	class GLRender
@@ -18,7 +19,7 @@ namespace GL {
 		void render(GLuint frame, GLScense* scense);
 
 	private:
-		void renderChilds(GLObject* child);
+		void renderChilds(GLObject* child, GLShader* global);
 
 	};
 }
