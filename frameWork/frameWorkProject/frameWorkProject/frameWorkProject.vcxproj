@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="frameWorkProject.cpp" />
+    <ClCompile Include="GLCallBack.cpp" />
     <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMaterial.cpp" />
     <ClCompile Include="GLNode.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="GLCallBack.h" />
     <ClInclude Include="GLGeometry.h" />
     <ClInclude Include="GLMaterial.h" />
     <ClInclude Include="GLNode.h" />
@@ -164,8 +166,11 @@
     <ClInclude Include="GLTexture.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fs.glsl" />
-    <None Include="vs.glsl" />
+    <Image Include="assert\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assert\fs.glsl" />
+    <None Include="assert\vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

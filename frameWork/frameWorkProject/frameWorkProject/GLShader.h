@@ -13,6 +13,12 @@ namespace GL {
 
 		void use();
 
+		void setInt(const char* name, int val);
+
+		void setFloat(const char* name, float val);
+
+		void setMat4(const char* name, const glm::mat4& mat);
+
 	private:
 		void createShaderProgram(const string& vs, const string& fs);
 

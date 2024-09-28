@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include "./glad/include/glad.h"
 #include "./glfw3.4/include/glfw3.h"
 #include "./glm/include/glm.hpp"
@@ -10,8 +11,10 @@
 
 #include <string>
 #include <vector>
+#include <list>
 #include <iostream>
 using namespace std;
+
 
 #if _DEBUG
 
@@ -26,3 +29,5 @@ using namespace std;
 
 
 #endif
+
+//stbi头文件使用是直接在cpp文件中定义宏，包含.h

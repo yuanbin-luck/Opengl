@@ -4,6 +4,8 @@
 
 namespace GL {
 	
+	class GLObject;
+	class GLScense;
 	class GLRender
 	{
 	public:
@@ -11,8 +13,12 @@ namespace GL {
 
 		~GLRender();
 
-		void render(GLuint frame);
+		void setClearColor(float r, float g, float b, float a = 1.0f);
 
+		void render(GLuint frame, GLScense* scense);
+
+	private:
+		void renderChilds(GLObject* child);
 
 	};
 }

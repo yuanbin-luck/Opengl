@@ -45,6 +45,9 @@
     <ClCompile Include="GLShader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="GLCallBack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -74,9 +77,17 @@
     <ClInclude Include="GLShader.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GLCallBack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vs.glsl" />
-    <None Include="fs.glsl" />
+    <Image Include="assert\1.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assert\fs.glsl" />
+    <None Include="assert\vs.glsl" />
   </ItemGroup>
 </Project>

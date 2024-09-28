@@ -17,6 +17,24 @@ void GL::GLShader::use()
 	glUseProgram(m_program);
 }
 
+void GL::GLShader::setInt(const char* name, int val)
+{
+	GLuint loca = glGetUniformLocation(m_program, name);
+	glUniform1i(loca, val);
+}
+
+void GL::GLShader::setFloat(const char* name, float val)
+{
+	GLuint loca = glGetUniformLocation(m_program, name);
+	glUniform1f(loca, val);
+}
+
+void GL::GLShader::setMat4(const char* name, const glm::mat4& mat)
+{
+	GLuint loca = glGetUniformLocation(m_program, name);
+	glUniformMatrix4fv(loca, 1,GL_FALSE, glm::value_ptr(mat));
+}
+
 void GL::GLShader::createShaderProgram(const string& vs, const string& fs)
 {
 	fstream vfile, ffile;
@@ -42,7 +60,7 @@ void GL::GLShader::createShaderProgram(const string& vs, const string& fs)
 		checkState(vShader);
 
 		GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(fShader, 1, &vchar, 0);
+		glShaderSource(fShader, 1, &fchar, 0);
 		glCompileShader(fShader);
 		checkState(fShader);
 
@@ -52,9 +70,11 @@ void GL::GLShader::createShaderProgram(const string& vs, const string& fs)
 		glLinkProgram(m_program);
 		checkState(m_program, false);
 
+		vfile.close();
+		ffile.close();
+
 		glDeleteShader(vShader);
 		glDeleteShader(fShader);
-
 	}
 	catch (const std::exception&)
 	{

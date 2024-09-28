@@ -3,6 +3,9 @@
 struct GLFWwindow;
 namespace GL {
 
+	class GLShader;
+	class GLGeometry;
+	class GLTexture;
 	class Application
 	{
 	public:
@@ -13,8 +16,11 @@ namespace GL {
 		void exec();
 
 	private:
-
 		GLFWwindow* m_window;
+
+		GLTexture* texture = nullptr;
+		GLShader* shader = nullptr;
+		GLGeometry* geo = nullptr;
 	};
 
 }

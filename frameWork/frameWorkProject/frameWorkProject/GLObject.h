@@ -4,6 +4,9 @@
 
 namespace GL {
 
+	class GLRender;
+	class GLGeometry;
+	class GLMaterial;
 	class GLObject
 	{
 	public:
@@ -39,12 +42,21 @@ namespace GL {
 
 		void setScale(const glm::vec3& scale);
 
+		void addChild(GLObject* child);
+
+	protected:
+		virtual GLGeometry* getGeometry();
+
+		virtual GLMaterial* getMaterial();
+
 	private:
 		glm::vec3 m_scale;
 		glm::vec3 m_rotate;
 		glm::vec3 m_location;
 
 		GLObject* m_parent;
+		std::list<GLObject*> m_childs;
+		friend class GLRender;
 	};
 
 }
