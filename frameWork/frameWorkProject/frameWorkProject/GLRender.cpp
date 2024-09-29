@@ -46,7 +46,7 @@ void GL::GLRender::renderChilds(GLObject* child, GLShader* global)
 		
 		glBindVertexArray(geometry->m_vao);
 		glEnable(GL_CULL_FACE);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glCullFace(GL_BACK);
 		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
