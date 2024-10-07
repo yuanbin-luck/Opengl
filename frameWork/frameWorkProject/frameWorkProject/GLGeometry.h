@@ -14,7 +14,7 @@ namespace GL {
 
 		static GLGeometry* createCube(float radius);
 
-		static GLGeometry* createSphere(float radius, int precision);
+		static GLGeometry* createSphere(float radius, int precision = 60);
 
 		static GLGeometry* createSurface(float radius);
 

@@ -5,6 +5,11 @@
 #include "GLTexture.h"
 #include "GLNode.h"
 #include "GLMaterial.h"
+#include "GLCallBack.h"
+#include "GLLight.h"
+
+
+#include <functional>
 
 GL::GLRender::GLRender()
 {
@@ -27,23 +32,51 @@ void GL::GLRender::render(GLuint frame, GLScense* scense)
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
-	if (scense->m_global)
-	{
-		scense->m_global->use();
-	}
-	renderChilds(scense, scense->m_global);
+	renderLights(scense->getLights());
+
+	renderChilds(scense, scense->m_global, scense->getLights());
 }
 
-void GL::GLRender::renderChilds(GLObject* child, GLShader* global)
+void GL::GLRender::renderLights(const list<GLLight*>& lights)
+{
+	//std::function<void(GLObject*)> renderLight = [=](GLObject* light) {
+	//	GLGeometry* geometry = light->getGeometry();
+	//	if (geometry)
+	//	{
+	//		if (GLMaterial* material = light->getMaterial())
+	//		{
+	//			//material->use(NULL, NULL, {});
+	//		}
+	//		glBindVertexArray(geometry->m_vao);
+	//		glEnable(GL_CULL_FACE);
+	//		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//		glCullFace(GL_BACK);
+	//		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
+	//		glBindVertexArray(0);
+	//	}
+	//	for (auto& child : light->getChilds())
+	//	{
+	//		renderLight(child);
+	//	}
+	//};
+
+	for (auto& node : lights)
+	{
+		renderLight(node);
+	}
+
+}
+
+void GL::GLRender::renderChilds(GLObject* child, GLShader* globalShader, const list<GLLight*>& lights)
 {
 	GLGeometry* geometry = child->getGeometry();
 	if (geometry)
 	{
 		if (GLMaterial* material = child->getMaterial())
 		{
-			material->use(NULL, global);
+			material->use(NULL, child, globalShader, lights);
 		}
-		
+
 		glBindVertexArray(geometry->m_vao);
 		glEnable(GL_CULL_FACE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -54,6 +87,31 @@ void GL::GLRender::renderChilds(GLObject* child, GLShader* global)
 
 	for (auto& node : child->m_childs)
 	{
-		renderChilds(node, global);
+		renderChilds(node, globalShader, lights);
 	}
 }
+
+void GL::GLRender::renderLight(GLObject* light)
+{
+	GLGeometry* geometry = light->getGeometry();
+	if (geometry)
+	{
+		if (GLMaterial* material = light->getMaterial())
+		{
+			material->use(NULL, light, NULL, {});
+		}
+
+		glBindVertexArray(geometry->m_vao);
+		glEnable(GL_CULL_FACE);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glCullFace(GL_BACK);
+		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
+	}
+
+	for (auto& child : light->getChilds())
+	{
+		renderLight(child);
+	}
+}
+

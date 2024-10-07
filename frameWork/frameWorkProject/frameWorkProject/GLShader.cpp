@@ -29,6 +29,18 @@ void GL::GLShader::setFloat(const char* name, float val)
 	glUniform1f(loca, val);
 }
 
+void GL::GLShader::setVec3(const char* name, const glm::vec3& val)
+{
+	GLuint loca = glGetUniformLocation(m_program, name);
+	glUniform3fv(loca, 1, glm::value_ptr(val));
+}
+
+void GL::GLShader::setVec4(const char* name, const glm::vec4& val)
+{
+	GLuint loca = glGetUniformLocation(m_program, name);
+	glUniform4fv(loca, 1, glm::value_ptr(val));
+}
+
 void GL::GLShader::setMat4(const char* name, const glm::mat4& mat)
 {
 	GLuint loca = glGetUniformLocation(m_program, name);

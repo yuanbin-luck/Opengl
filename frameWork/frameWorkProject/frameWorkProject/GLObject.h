@@ -28,9 +28,13 @@ namespace GL {
 
 		glm::vec3 scale();
 
+		std::list<GLObject*> getChilds();
+
 		void setParent(GLObject* parent);
 
 		void setLocation(const glm::vec3& loca);
+
+		void setLocation(float x, float y, float z);
 
 		void setRotate(const glm::vec3& rotate);
 

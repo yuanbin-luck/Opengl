@@ -3,7 +3,8 @@
 #include <coreOpengl.h>
 
 namespace GL {
-	
+
+	class GLLight;
 	class GLShader;
 	class GLObject;
 	class GLScense;
@@ -19,8 +20,13 @@ namespace GL {
 		void render(GLuint frame, GLScense* scense);
 
 	private:
-		void renderChilds(GLObject* child, GLShader* global);
+		void renderLights(const list<GLLight*>& lights);
 
+		void renderChilds(GLObject* child, GLShader* globalShader, const list<GLLight*>& lights);
+		
+		void renderLight(GLObject* light);
+	
+	
 	};
 }
 

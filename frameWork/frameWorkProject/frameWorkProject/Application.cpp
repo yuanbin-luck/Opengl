@@ -7,6 +7,7 @@
 #include "GLScense.h"
 #include "GLNode.h"
 #include "GLMaterial.h"
+#include "GLPointLight.h"
 
 // 包含windows的头文件
 #include <windows.h>
@@ -79,6 +80,7 @@ GL::Application::Application(int width, int height, const char* title):m_window(
 
 	m_render = new GLRender();
 	m_scense = new GLScense(nullptr);
+	m_scense->addLight(new GLPointLight);
 	addRoot(new GLNode(GLGeometry::createSphere(1,60)
 		, new GLMaterial(new GLShader("./assert/vs.glsl", "./assert/fs.glsl"),new GLTexture("./assert/1.jpg",0))));
 }

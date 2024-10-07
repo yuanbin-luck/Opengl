@@ -1,7 +1,11 @@
 #pragma once
 
+#include <coreOpengl.h>
+
 namespace GL {
 
+	class GLObject;
+	class GLLight;
 	class GLCamera;
 	class GLRender;
 	class GLShader;
@@ -14,7 +18,7 @@ namespace GL {
 
 		~GLMaterial();
 
-		void use(GLCamera* camera, GLShader* global);
+		void use(GLCamera* camera, GLObject* obj, GLShader* global, const std::list<GLLight*>& lights);
 
 		void setShader(GLShader* shader);
 

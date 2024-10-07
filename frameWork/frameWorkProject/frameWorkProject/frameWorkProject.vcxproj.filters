@@ -13,18 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\灯光">
+      <UniqueIdentifier>{a82d367f-5964-4480-9723-98d0ed0366e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\灯光">
+      <UniqueIdentifier>{12cf2f77-4de1-4945-b5bb-d518183b59c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染器">
+      <UniqueIdentifier>{1e94c87a-ce90-48fd-86bf-e3b84b201848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染器">
+      <UniqueIdentifier>{6af2cd54-a706-41f5-b550-c3367692afd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\场景">
+      <UniqueIdentifier>{83a8ffe9-6f82-4e30-a12f-0061b2a8ec73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\场景">
+      <UniqueIdentifier>{c9f8ee02-28a4-40db-870e-60b76fd1a31f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\材质">
+      <UniqueIdentifier>{795deb78-a1e1-48cf-bc36-6d6ae2bf2c44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\材质">
+      <UniqueIdentifier>{47558404-f770-4c39-883e-e04ed061dea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\事件回调">
+      <UniqueIdentifier>{0aa89df4-0351-448f-9e2a-17929d194d3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\事件回调">
+      <UniqueIdentifier>{6301bc87-3cd1-456c-9dfb-dae70dbbbf05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frameWorkProject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GLRender.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GLScense.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GLObject.cpp">
@@ -36,30 +60,39 @@
     <ClCompile Include="GLGeometry.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="GLMaterial.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GLTexture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GLShader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GLCallBack.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="GLCamera.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GLLight.cpp">
+      <Filter>源文件\灯光</Filter>
+    </ClCompile>
+    <ClCompile Include="GLRender.cpp">
+      <Filter>源文件\渲染器</Filter>
+    </ClCompile>
+    <ClCompile Include="GLScense.cpp">
+      <Filter>源文件\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="GLPointLight.cpp">
+      <Filter>源文件\灯光</Filter>
+    </ClCompile>
+    <ClCompile Include="GLMaterial.cpp">
+      <Filter>源文件\材质</Filter>
+    </ClCompile>
+    <ClCompile Include="GLTexture.cpp">
+      <Filter>源文件\材质</Filter>
+    </ClCompile>
+    <ClCompile Include="GLShader.cpp">
+      <Filter>源文件\材质</Filter>
+    </ClCompile>
+    <ClCompile Include="GLCallBack.cpp">
+      <Filter>源文件\事件回调</Filter>
+    </ClCompile>
+    <ClCompile Include="GLLightCallBack.cpp">
+      <Filter>源文件\事件回调</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GLRender.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GLScense.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GLObject.h">
@@ -71,20 +104,35 @@
     <ClInclude Include="GLGeometry.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GLMaterial.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GLTexture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GLShader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GLCallBack.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="GLCamera.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GLLight.h">
+      <Filter>头文件\灯光</Filter>
+    </ClInclude>
+    <ClInclude Include="GLRender.h">
+      <Filter>头文件\渲染器</Filter>
+    </ClInclude>
+    <ClInclude Include="GLScense.h">
+      <Filter>头文件\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="GLPointLight.h">
+      <Filter>头文件\灯光</Filter>
+    </ClInclude>
+    <ClInclude Include="GLMaterial.h">
+      <Filter>头文件\材质</Filter>
+    </ClInclude>
+    <ClInclude Include="GLShader.h">
+      <Filter>头文件\材质</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>头文件\材质</Filter>
+    </ClInclude>
+    <ClInclude Include="GLCallBack.h">
+      <Filter>头文件\事件回调</Filter>
+    </ClInclude>
+    <ClInclude Include="GLLightCallBack.h">
+      <Filter>头文件\事件回调</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +141,17 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assert\fs.glsl" />
-    <None Include="assert\vs.glsl" />
+    <None Include="assert\light-fs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="assert\light-vs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="assert\fs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="assert\vs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

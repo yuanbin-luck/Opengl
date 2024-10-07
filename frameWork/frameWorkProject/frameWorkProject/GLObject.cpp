@@ -45,6 +45,11 @@ glm::vec3 GL::GLObject::scale()
     return m_scale;
 }
 
+std::list<GL::GLObject*> GL::GLObject::getChilds()
+{
+    return m_childs;
+}
+
 void GL::GLObject::setParent(GLObject* parent)
 {
     m_parent = parent;
@@ -53,6 +58,11 @@ void GL::GLObject::setParent(GLObject* parent)
 void GL::GLObject::setLocation(const glm::vec3& loca)
 {
     m_location = loca;
+}
+
+void GL::GLObject::setLocation(float x, float y, float z)
+{
+    m_location = glm::vec3(x, y, z);
 }
 
 void GL::GLObject::setRotate(const glm::vec3& rotate)

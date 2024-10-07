@@ -42,13 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -146,9 +146,12 @@
     <ClCompile Include="GLCallBack.cpp" />
     <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="GLGeometry.cpp" />
+    <ClCompile Include="GLLight.cpp" />
+    <ClCompile Include="GLLightCallBack.cpp" />
     <ClCompile Include="GLMaterial.cpp" />
     <ClCompile Include="GLNode.cpp" />
     <ClCompile Include="GLObject.cpp" />
+    <ClCompile Include="GLPointLight.cpp" />
     <ClCompile Include="GLRender.cpp" />
     <ClCompile Include="GLScense.cpp" />
     <ClCompile Include="GLShader.cpp" />
@@ -159,9 +162,12 @@
     <ClInclude Include="GLCallBack.h" />
     <ClInclude Include="GLCamera.h" />
     <ClInclude Include="GLGeometry.h" />
+    <ClInclude Include="GLLight.h" />
+    <ClInclude Include="GLLightCallBack.h" />
     <ClInclude Include="GLMaterial.h" />
     <ClInclude Include="GLNode.h" />
     <ClInclude Include="GLObject.h" />
+    <ClInclude Include="GLPointLight.h" />
     <ClInclude Include="GLRender.h" />
     <ClInclude Include="GLScense.h" />
     <ClInclude Include="GLShader.h" />
@@ -172,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assert\fs.glsl" />
+    <None Include="assert\light-fs.glsl" />
+    <None Include="assert\light-vs.glsl" />
     <None Include="assert\vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

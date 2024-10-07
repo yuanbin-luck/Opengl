@@ -13,8 +13,12 @@ GL::GLMaterial::~GLMaterial()
 {
 }
 
-void GL::GLMaterial::use(GLCamera* camera, GLShader* global)
+void GL::GLMaterial::use(GLCamera* camera, GLObject* obj, GLShader* global, const list<GLLight*>& lights)
 {
+	if (global)
+	{
+		global->use();
+	}
 	if (m_shader)
 	{
 		m_shader->use();
@@ -23,10 +27,14 @@ void GL::GLMaterial::use(GLCamera* camera, GLShader* global)
 	{
 		m_texture->bind();
 	}
+	if (!global && !m_shader)
+	{
+		glUseProgram(0);
+	}
 
 	if (m_callback)
 	{
-		m_callback->callback(camera,this, global);
+		m_callback->callback(camera, obj, this, global, lights);
 	}
 }
 
