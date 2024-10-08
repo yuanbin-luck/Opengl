@@ -24,8 +24,7 @@ vec4 pointColor()
 	float dis = distance(pos, lightpos);
 	float effect = 1.0 / (k.x + k.y * dis + k.z * pow(dis,2));
 
-	vec3 refDir = reflect(normalize(pos - lightpos), normal);
-	float diff = max(0,dot(refDir, normal));
+	float diff = clamp(dot(normal, normalize(lightpos - pos)),0,1);
 	vec3 diffuse = lightColor.xyz * diff;
 
 	vec3 lightDir = normalize(lightpos - pos);
@@ -36,7 +35,7 @@ vec4 pointColor()
 	vec3 color = (diffuse + specualr) * effect;
 
 	return tcolor * vec4(color, 1);
-	return vec4(effect);
+	return vec4(0,0,-normal.z,1);
 }
 
 
@@ -44,8 +43,6 @@ void main()
 {
 
 	fcolor = pointColor();
-
-
 
 //	vec4 tcolor = texture(sampler,uv);
 //

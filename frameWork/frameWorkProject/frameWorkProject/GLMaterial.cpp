@@ -36,6 +36,7 @@ void GL::GLMaterial::use(GLCamera* camera, GLObject* obj, GLShader* global, cons
 	{
 		m_callback->callback(camera, obj, this, global, lights);
 	}
+	
 }
 
 void GL::GLMaterial::setShader(GLShader* shader)

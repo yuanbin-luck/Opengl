@@ -98,7 +98,7 @@ void GL::GLRender::renderLight(GLObject* light)
 	{
 		if (GLMaterial* material = light->getMaterial())
 		{
-			material->use(NULL, light, NULL, {});
+			material->use(NULL, light, NULL, { static_cast<GLLight*>(light)});
 		}
 
 		glBindVertexArray(geometry->m_vao);

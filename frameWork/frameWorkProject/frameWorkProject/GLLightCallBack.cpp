@@ -13,8 +13,20 @@ void GL::GLLightCallBack::callback(GLCamera* camera, GLObject* obj, GLMaterial* 
 	glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	glm::mat4 m = glm::mat4(1.0f);
 	m = glm::translate(glm::mat4(1.0f), obj->location());
-	m = glm::rotate(glm::mat4(1.0f), t, glm::vec3(0, 1, 0)) * m;
-	
+	//m = glm::rotate(glm::mat4(1.0f), t *0.004f, glm::vec3(0, 1, 0)) * m;
+
+	glm::vec3 scale, trans, skew;
+	glm::vec4 persp;
+	glm::quat qua;
+	glm::decompose(m, scale, qua, trans, skew, persp);
+	glm::mat4 r = glm::toMat4(qua);
+	glm::vec3 rotate;
+	glm::extractEulerAngleXYX(r, rotate.x, rotate.y, rotate.z);
+	rotate.x = glm::degrees(rotate.x);
+	rotate.y = glm::degrees(rotate.y);
+	rotate.z = glm::degrees(rotate.z);
+	//lights.front()->setLocation(trans);
+
 
 	GLShader* shader = NULL;
 	if (material->getShader())
