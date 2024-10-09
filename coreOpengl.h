@@ -9,6 +9,11 @@
 #include "./glm/include/ext/matrix_clip_space.hpp"
 #include "./glm/include/gtc/type_ptr.hpp"
 
+#define GLM_ENABLE_EXPERIMENTAL
+#include "./glm/include/gtx/matrix_decompose.hpp"
+#include "./glm/include/gtx/euler_angles.hpp"
+#include "./glm/include/gtx/quaternion.hpp"
+
 #include <string>
 #include <vector>
 #include <list>
