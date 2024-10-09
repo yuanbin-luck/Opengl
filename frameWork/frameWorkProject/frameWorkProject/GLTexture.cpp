@@ -35,6 +35,7 @@ void GL::GLTexture::loadTexture(const char* textureName)
 
 		glTexParameteri(m_tTarget, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(m_tTarget, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glGenerateMipmap(m_tTarget);
 		stbi_image_free((void*)data);
 	}
 	else

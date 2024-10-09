@@ -11,7 +11,210 @@ GL::GLGeometry::GLGeometry(const std::vector<float>& vertexs
 
 GLGeometry* GL::GLGeometry::createCube(float radius)
 {
-	return nullptr;
+	float vertices[] = {
+		// positions        
+		-0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+
+		-0.5f, -0.5f,  0.5f,
+		 0.5f, -0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f, -0.5f,  0.5f,
+
+		-0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+
+		 0.5f,  0.5f,  0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+
+		-0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f,  0.5f,
+		 0.5f, -0.5f,  0.5f,
+		-0.5f, -0.5f,  0.5f,
+		-0.5f, -0.5f, -0.5f,
+
+		-0.5f,  0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f,  0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f, -0.5f,
+	};
+
+	float nor[] = {
+		// normals         
+		0.0f,  0.0f, -1.0f,
+		0.0f,  0.0f, -1.0f,
+		0.0f,  0.0f, -1.0f,
+		0.0f,  0.0f, -1.0f,
+		0.0f,  0.0f, -1.0f,
+		0.0f,  0.0f, -1.0f,
+
+		0.0f,  0.0f,  1.0f,
+		0.0f,  0.0f,  1.0f,
+		0.0f,  0.0f,  1.0f,
+		0.0f,  0.0f,  1.0f,
+		0.0f,  0.0f,  1.0f,
+		0.0f,  0.0f,  1.0f,
+
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+		1.0f,  0.0f,  0.0f,
+
+		0.0f, -1.0f,  0.0f,
+		0.0f, -1.0f,  0.0f,
+		0.0f, -1.0f,  0.0f,
+		0.0f, -1.0f,  0.0f,
+		0.0f, -1.0f,  0.0f,
+		0.0f, -1.0f,  0.0f,
+
+		0.0f,  1.0f,  0.0f,
+		0.0f,  1.0f,  0.0f,
+		0.0f,  1.0f,  0.0f,
+		0.0f,  1.0f,  0.0f,
+		0.0f,  1.0f,  0.0f,
+		0.0f,  1.0f,  0.0f,
+	};
+
+	float tex[] = {
+		// texture coords
+		0.0f,  0.0f,
+		1.0f,  0.0f,
+		1.0f,  1.0f,
+		1.0f,  1.0f,
+		0.0f,  1.0f,
+		0.0f,  0.0f,
+
+		0.0f,  0.0f,
+		1.0f,  0.0f,
+		1.0f,  1.0f,
+		1.0f,  1.0f,
+		0.0f,  1.0f,
+		0.0f,  0.0f,
+
+		1.0f,  0.0f,
+		1.0f,  1.0f,
+		0.0f,  1.0f,
+		0.0f,  1.0f,
+		0.0f,  0.0f,
+		1.0f,  0.0f,
+
+		1.0f,  0.0f,
+		1.0f,  1.0f,
+		0.0f,  1.0f,
+		0.0f,  1.0f,
+		0.0f,  0.0f,
+		1.0f,  0.0f,
+
+		0.0f,  1.0f,
+		1.0f,  1.0f,
+		1.0f,  0.0f,
+		1.0f,  0.0f,
+		0.0f,  0.0f,
+		0.0f,  1.0f,
+
+		0.0f,  1.0f,
+		1.0f,  1.0f,
+		1.0f,  0.0f,
+		1.0f,  0.0f,
+		0.0f,  0.0f,
+		0.0f,  1.0f
+	};
+
+
+	std::vector<float> vertexs;
+	std::vector<float> normals;
+	std::vector<float> uvs;
+	std::vector<int> indexs;
+
+	for (int i = 0; i < sizeof(vertices); i++)
+	{
+		vertexs.push_back(vertices[i]);
+	}
+	for (int i = 0; i < sizeof(nor); i++)
+	{
+		normals.push_back(nor[i]);
+	}	
+	for (int i = 0; i < sizeof(tex); i++)
+	{
+		uvs.push_back(tex[i]);
+	}
+	//for (int i = 0; i < 36; i++)
+	//{
+	//	indexs.push_back(i);
+	//}
+
+	indexs.push_back(2);
+	indexs.push_back(1);
+	indexs.push_back(0);
+	indexs.push_back(5);
+	indexs.push_back(4);
+	indexs.push_back(3);
+
+	indexs.push_back(6);
+	indexs.push_back(7);
+	indexs.push_back(8);
+	indexs.push_back(9);
+	indexs.push_back(10);
+	indexs.push_back(11);
+
+
+	indexs.push_back(12);
+	indexs.push_back(13);
+	indexs.push_back(14);
+	indexs.push_back(15);
+	indexs.push_back(16);
+	indexs.push_back(17);
+
+	indexs.push_back(20);
+	indexs.push_back(19);
+	indexs.push_back(18);
+	indexs.push_back(23);
+	indexs.push_back(22);
+	indexs.push_back(21);
+
+
+	indexs.push_back(24);
+	indexs.push_back(25);
+	indexs.push_back(26);
+	indexs.push_back(27);
+	indexs.push_back(28);
+	indexs.push_back(29);
+
+	indexs.push_back(32);
+	indexs.push_back(31);
+	indexs.push_back(30);
+	indexs.push_back(35);
+	indexs.push_back(34);
+	indexs.push_back(33);
+
+	GLGeometry* geometry = new GLGeometry(vertexs, normals, uvs, indexs);
+	return geometry;
 }
 
 GLGeometry* GL::GLGeometry::createSphere(float radius, int precision)

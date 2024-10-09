@@ -34,32 +34,11 @@ void GL::GLRender::render(GLuint frame, GLScense* scense)
 
 	renderLights(scense->getLights());
 
-	renderChilds(scense, scense->m_global, scense->getLights());
+	//renderChilds(scense, scense->m_global, scense->getLights());
 }
 
 void GL::GLRender::renderLights(const list<GLLight*>& lights)
 {
-	//std::function<void(GLObject*)> renderLight = [=](GLObject* light) {
-	//	GLGeometry* geometry = light->getGeometry();
-	//	if (geometry)
-	//	{
-	//		if (GLMaterial* material = light->getMaterial())
-	//		{
-	//			//material->use(NULL, NULL, {});
-	//		}
-	//		glBindVertexArray(geometry->m_vao);
-	//		glEnable(GL_CULL_FACE);
-	//		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//		glCullFace(GL_BACK);
-	//		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
-	//		glBindVertexArray(0);
-	//	}
-	//	for (auto& child : light->getChilds())
-	//	{
-	//		renderLight(child);
-	//	}
-	//};
-
 	for (auto& node : lights)
 	{
 		renderLight(node);
@@ -81,6 +60,7 @@ void GL::GLRender::renderChilds(GLObject* child, GLShader* globalShader, const l
 		glEnable(GL_CULL_FACE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glCullFace(GL_BACK);
+		//glDisable(GL_CULL_FACE);
 		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 	}

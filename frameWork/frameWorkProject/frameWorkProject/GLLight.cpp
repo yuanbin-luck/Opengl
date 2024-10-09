@@ -5,7 +5,7 @@
 #include "GLLightCallBack.h"
 
 GL::GLLight::GLLight(const glm::vec4& lightColor,GLObject* parent)
-	:GLNode(GLGeometry::createSphere(0.1), new GLMaterial(new GLShader("./assert/light-vs.glsl", "./assert/light-fs.glsl")), parent)
+	:GLNode(GLGeometry::createSphere(0.5), new GLMaterial(new GLShader("./assert/light-vs.glsl", "./assert/light-fs.glsl")), parent)
 	, m_lightColor(lightColor), m_type(LT_None)
 {
 	getMaterial()->setRenderCallBack(new GLLightCallBack);
