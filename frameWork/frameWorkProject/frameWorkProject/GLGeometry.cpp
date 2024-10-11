@@ -224,8 +224,8 @@ GLGeometry* GL::GLGeometry::createSphere(float radius, int precision)
 	std::vector<float> uvs;
 	std::vector<int> indexs;
 
-	int Lat = 60;
-	int Long = 60;
+	int Lat = precision;
+	int Long = precision;
 	for (int i = 0; i <= Lat; i++)
 	{
 		float phi = glm::pi<float>() / float(Lat) * float(i);

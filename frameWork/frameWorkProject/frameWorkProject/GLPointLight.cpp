@@ -5,7 +5,7 @@ GL::GLPointLight::GLPointLight(const glm::vec3& lightPos, const glm::vec4& light
 {
 	m_type = LT_Point;
 	setEffectRange(600);
-	//setLocation(0,0,3);
+	setLocation(0,0,2);
 }
 
 GL::GLPointLight::~GLPointLight()

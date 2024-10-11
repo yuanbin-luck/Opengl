@@ -35,8 +35,8 @@ vec4 pointColor()
 
 	vec3 color = (diffuse + specualr) ;
 
-	//return tcolor * vec4(diffuse, 1);
-	//return vec4(abs(normal),1);
+	return tcolor * vec4(diffuse, 1);
+	return vec4(abs(normal),1);
 	return tcolor;
 }
 

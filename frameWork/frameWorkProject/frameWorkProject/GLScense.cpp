@@ -3,7 +3,7 @@
 
 GL::GLScense::GLScense(GLObject* parent):GLObject(parent), m_global(nullptr)
 {
-	m_global = new GLShader("./assert/vs.glsl", "./assert/fs.glsl");
+	m_global = new GLShader("./assert/light-vs.glsl", "./assert/light-fs.glsl");
 }
 
 GL::GLScense::~GLScense()
