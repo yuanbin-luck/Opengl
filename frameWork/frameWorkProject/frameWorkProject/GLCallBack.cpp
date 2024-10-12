@@ -27,11 +27,11 @@ void GL::GLCallBack::callback(GLCamera* camera, GLObject* obj, GLMaterial* mater
 	shader->setMat4("view", v);
 	shader->setMat4("model", m);
 	
-	//GLPointLight* plight = static_cast<GLPointLight*>(lights.front());
-	//glm::vec3 k;
-	//plight->getLightK(k.x,k.y,k.z);
-	//shader->setVec3("k", k);
-	//shader->setVec3("lightpos", plight->location());
-	//shader->setVec4("lightColor", plight->lightColor());
-	//shader->setVec3("viewPos", glm::vec3(0,0,1));
+	GLPointLight* plight = static_cast<GLPointLight*>(lights.front());
+	glm::vec3 k;
+	plight->getLightK(k.x,k.y,k.z);
+	shader->setVec3("k", k);
+	shader->setVec3("lightpos", plight->location());
+	shader->setVec4("lightColor", plight->lightColor());
+	shader->setVec3("viewPos", glm::vec3(0,0,1));
 }

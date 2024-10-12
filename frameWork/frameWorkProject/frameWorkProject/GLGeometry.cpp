@@ -375,4 +375,5 @@ void GL::GLGeometry::createVao(const std::vector<float>& vertexs
 	
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[3]);
 	m_number = indexs.size();
+	glBindVertexArray(0);
 }
