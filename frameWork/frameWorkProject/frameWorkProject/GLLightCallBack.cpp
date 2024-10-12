@@ -10,10 +10,12 @@ void GL::GLLightCallBack::callback(GLCamera* camera, GLObject* obj, GLMaterial* 
 {
 	float t = glfwGetTime();
 	glm::mat4 p = glm::perspective(45.0f, 1.0f, 0.01f, 1000.0f);
-	glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	glm::mat4 m = glm::mat4(1.0f);
-	m = glm::translate(glm::mat4(1.0f), obj->location());
-	//m = glm::rotate(glm::mat4(1.0f), t*0.4f , glm::vec3(0, 1, 0)) * m;
+	obj->setRotateY(t);
+	m = glm::translate(glm::mat4(1.0f), glm::vec3(0,0,2));
+	m = glm::rotate(glm::mat4(1.0f), t, glm::vec3(0,1,0)) * m;
+
 
 	glm::vec3 scale, trans, skew;
 	glm::vec4 persp;
@@ -25,8 +27,7 @@ void GL::GLLightCallBack::callback(GLCamera* camera, GLObject* obj, GLMaterial* 
 	rotate.x = glm::degrees(rotate.x);
 	rotate.y = glm::degrees(rotate.y);
 	rotate.z = glm::degrees(rotate.z);
-	//lights.front()->setLocation(trans);
-
+	obj->setLocation(trans);
 
 	GLShader* shader = NULL;
 	if (material->getShader())

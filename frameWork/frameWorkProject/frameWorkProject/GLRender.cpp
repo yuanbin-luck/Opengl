@@ -57,9 +57,10 @@ void GL::GLRender::renderChilds(GLObject* child, GLShader* globalShader, const l
 		}
 
 		glBindVertexArray(geometry->m_vao);
+		glFrontFace(GL_CW);
 		glEnable(GL_CULL_FACE);
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glCullFace(GL_BACK);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		//glDisable(GL_CULL_FACE);
 		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
@@ -80,11 +81,11 @@ void GL::GLRender::renderLight(GLObject* light)
 		{
 			material->use(NULL, light, NULL, { static_cast<GLLight*>(light)});
 		}
-
 		glBindVertexArray(geometry->m_vao);
-		//glEnable(GL_CULL_FACE);
+		glFrontFace(GL_CW);
+		glEnable(GL_CULL_FACE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		//glCullFace(GL_BACK);
+		glCullFace(GL_BACK);
 		glDrawElements(GL_TRIANGLES, geometry->m_number, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 	}

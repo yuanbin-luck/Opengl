@@ -17,8 +17,7 @@ out vec3 pos;
 void main()
 {
 	gl_Position = projection * view * model * vec4(ipos, 1.0);
-	color = abs(ipos);
 	uv = iuv;
-	normal = normalize(inormal);
+	normal  = normalize(inormal);
 	pos = ipos;
 }
