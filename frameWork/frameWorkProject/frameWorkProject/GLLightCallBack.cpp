@@ -10,7 +10,7 @@ void GL::GLLightCallBack::callback(GLCamera* camera, GLObject* obj, GLMaterial* 
 {
 	float t = glfwGetTime();
 	glm::mat4 p = glm::perspective(45.0f, 1.0f, 0.01f, 1000.0f);
-	glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 20), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	glm::mat4 m = glm::mat4(1.0f);
 	obj->setRotateY(t);
 	m = glm::translate(glm::mat4(1.0f), glm::vec3(0,0,2));

@@ -90,6 +90,9 @@
     <ClCompile Include="GLLightCallBack.cpp">
       <Filter>源文件\事件回调</Filter>
     </ClCompile>
+    <ClCompile Include="GLSpotLight.cpp">
+      <Filter>源文件\灯光</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="GLLightCallBack.h">
       <Filter>头文件\事件回调</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSpotLight.h">
+      <Filter>头文件\灯光</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

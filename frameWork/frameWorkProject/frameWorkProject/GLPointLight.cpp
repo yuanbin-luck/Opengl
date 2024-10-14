@@ -3,9 +3,9 @@
 GL::GLPointLight::GLPointLight(const glm::vec3& lightPos, const glm::vec4& lightColor, GLObject* parent):GLLight(lightColor, parent)
 ,m_lightPos(lightPos)
 {
-	m_type = LT_Point;
-	setEffectRange(13);
-	setLocation(0,0,2);
+	m_lightType = LT_Point;
+	setEffectRange(600);
+	setLocation(0,0,3);
 }
 
 GL::GLPointLight::~GLPointLight()

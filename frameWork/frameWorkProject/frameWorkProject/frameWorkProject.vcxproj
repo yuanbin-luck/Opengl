@@ -155,6 +155,7 @@
     <ClCompile Include="GLRender.cpp" />
     <ClCompile Include="GLScense.cpp" />
     <ClCompile Include="GLShader.cpp" />
+    <ClCompile Include="GLSpotLight.cpp" />
     <ClCompile Include="GLTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="GLRender.h" />
     <ClInclude Include="GLScense.h" />
     <ClInclude Include="GLShader.h" />
+    <ClInclude Include="GLSpotLight.h" />
     <ClInclude Include="GLTexture.h" />
   </ItemGroup>
   <ItemGroup>

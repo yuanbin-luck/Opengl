@@ -8,6 +8,7 @@
 #include "GLNode.h"
 #include "GLMaterial.h"
 #include "GLPointLight.h"
+#include "GLSpotLight.h"
 
 // 包含windows的头文件
 #include <windows.h>
@@ -48,10 +49,10 @@ void SetVSyncState(bool enable)
 }
 
 
-
+GL::Application* GL::Application::m_self = nullptr;
 GL::Application::Application(int width, int height, const char* title):m_window(nullptr)
 {
-
+	m_self = this;
 	glfwInit();
 
 	m_window = glfwCreateWindow(width, height, title, NULL, NULL);
@@ -76,14 +77,46 @@ GL::Application::Application(int width, int height, const char* title):m_window(
 	//}
 
 	glfwSetWindowSizeCallback(m_window, windowsizefun);
+	
+	glfwSetMouseButtonCallback(m_window, mousebuttonfun);
 
 
 	m_render = new GLRender();
 	m_scense = new GLScense(nullptr);
-	m_scense->addLight(new GLPointLight);
-	addRoot(new GLNode(GLGeometry::createSphere(1) \
+	m_scense->addLight(new GLSpotLight(glm::vec3(0, 0, 10)));
+	//addRoot(new GLNode(GLGeometry::createSphere(1,60) \
 		, new GLMaterial(new GLShader("./assert/vs.glsl", "./assert/fs.glsl"),new GLTexture("./assert/1.jpg",0))));
 	///addRoot(new GLNode(GLGeometry::createCube(1), new GLMaterial()));
+
+	{
+		GLNode* root = new GLNode(GLGeometry::createSphere(1, 60) \
+			, new GLMaterial(new GLShader("./assert/vs.glsl", "./assert/fs.glsl"), new GLTexture("./assert/1.jpg", 0)));
+
+		vector<glm::vec3> locas{ 
+			glm::vec3(0,10,0),
+			glm::vec3(5,0,0),
+			glm::vec3(0,3,0),
+			glm::vec3(0,7,0),
+			glm::vec3(0,0,9),
+			glm::vec3(4,10,4),
+			glm::vec3(10,2,0),
+			glm::vec3(4,4,5),
+			glm::vec3(3,4,7),
+			glm::vec3(-5,1,-4),
+			glm::vec3(1,8,3),
+		};
+
+
+		for (int i = 0; i < 10; i++)
+		{
+			GLNode* node = new GLNode(GLGeometry::createSphere(1, 60) \
+				, new GLMaterial(new GLShader("./assert/vs.glsl", "./assert/fs.glsl"), new GLTexture("./assert/1.jpg", 0)));
+
+			node->setLocation(locas[i]);
+			root->addChild(node);
+		}
+		addRoot(root);
+	}
 }
 
 GL::Application::~Application()
@@ -127,4 +160,27 @@ void GL::Application::addRoot(GLObject* root)
 void GL::Application::windowsizefun(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
+}
+
+void GL::Application::mousebuttonfun(GLFWwindow* window, int button, int action, int mods)
+{
+	if (button == 0 && action == GLFW_PRESS)
+	{
+		double xpos = 0, ypos = 0;
+		glfwGetCursorPos(m_self->m_window, &xpos, &ypos);
+		glm::mat4 p = glm::perspective(45.0f, 1.0f, 0.01f, 1000.0f);
+		glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 60), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+		glm::mat4 m = glm::mat4(1.0f);
+		glm::mat4 t =   m* v * p;
+		glm::vec3 tx= glm::unProject(glm::vec3(float(xpos), float(ypos), 0.0), m, p, glm::vec4(0,0,800,400));
+
+		double x = ((xpos / 800.0) * 2.0 ) - 1.0;
+		double y = (((600.0 - ypos) / 600.0) * 2.0 ) - 1.0;
+
+		glm::vec4 wo = glm::transpose(glm::inverse(t)) * glm::vec4(x, y, 0, 1);
+		cout << "X: " << x << "  Y:" << y 
+			<<"   Word Loca: (" <<wo.x  <<"," << wo.y<< ")\n";
+		int a = 0;
+	}
+
 }

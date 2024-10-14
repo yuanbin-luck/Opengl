@@ -12,7 +12,7 @@ namespace GL {
 			, const std::vector<float>& uvs
 			, const std::vector<int>& indexs);
 
-		static GLGeometry* createCube(float radius);
+		static GLGeometry* createCube(float radius = 0.5);
 
 		static GLGeometry* createSphere(float radius, int precision = 60);
 

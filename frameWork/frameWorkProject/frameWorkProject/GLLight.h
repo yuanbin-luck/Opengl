@@ -22,7 +22,7 @@ namespace GL {
 		void setLightColor(const glm::vec4& lightColor);
 
 	protected:
-		LightType m_type;
+		LightType m_lightType;
 
 	private:
 		glm::vec4 m_lightColor;
