@@ -13,6 +13,7 @@
 #include "./glm/include/gtx/matrix_decompose.hpp"
 #include "./glm/include/gtx/euler_angles.hpp"
 #include "./glm/include/gtx/quaternion.hpp"
+#include "./glm/include/gtx/string_cast.hpp"
 
 #include <string>
 #include <vector>

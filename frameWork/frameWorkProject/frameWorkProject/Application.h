@@ -1,5 +1,6 @@
 #pragma once
 
+#include <coreOpengl.h>
 struct GLFWwindow;
 namespace GL {
 
@@ -26,6 +27,8 @@ namespace GL {
 		static void windowsizefun(GLFWwindow* window, int width, int height);
 
 		static void mousebuttonfun(GLFWwindow* window, int button, int action, int mods);
+
+		static void errorCalback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam);
 
 	private:
 		GLFWwindow* m_window;

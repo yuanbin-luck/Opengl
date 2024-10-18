@@ -56,9 +56,6 @@ vec4 getSpotLight()
 	float c1 = clamp(dot(sligthDir, normalize(spot.lightDir) ), 0, 1);
 	
 
-
-
-
 	vec4 ocolor = tcolor;
 
 	return ocolor;

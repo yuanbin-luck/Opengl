@@ -79,6 +79,9 @@ GL::Application::Application(int width, int height, const char* title):m_window(
 	glfwSetWindowSizeCallback(m_window, windowsizefun);
 	
 	glfwSetMouseButtonCallback(m_window, mousebuttonfun);
+	
+	glDebugMessageCallback(errorCalback, NULL);
+	glDebugMessageControl(GL_TRUE, GL_TRUE, GL_TRUE,1,NULL,GL_TRUE);
 
 
 	m_render = new GLRender();
@@ -105,7 +108,6 @@ GL::Application::Application(int width, int height, const char* title):m_window(
 			glm::vec3(-5,1,-4),
 			glm::vec3(1,8,3),
 		};
-
 
 		for (int i = 0; i < 10; i++)
 		{
@@ -171,16 +173,31 @@ void GL::Application::mousebuttonfun(GLFWwindow* window, int button, int action,
 		glm::mat4 p = glm::perspective(45.0f, 1.0f, 0.01f, 1000.0f);
 		glm::mat4 v = glm::lookAt(glm::vec3(0, 0, 60), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 		glm::mat4 m = glm::mat4(1.0f);
-		glm::mat4 t =   m* v * p;
-		glm::vec3 tx= glm::unProject(glm::vec3(float(xpos), float(ypos), 0.0), m, p, glm::vec4(0,0,800,400));
 
 		double x = ((xpos / 800.0) * 2.0 ) - 1.0;
 		double y = (((600.0 - ypos) / 600.0) * 2.0 ) - 1.0;
 
-		glm::vec4 wo = glm::transpose(glm::inverse(t)) * glm::vec4(x, y, 0, 1);
+		glm::vec3 nds = glm::vec3(x, y, 1.0f);
+		glm::vec4 clip = glm::vec4(nds, 1.0f);
+		glm::vec4 eye = glm::inverse(p) * clip;
+		glm::vec4 word = glm::inverse(v) * eye;
+		if (word.w != 0)
+		{
+			word.x /= word.w;
+			word.y /= word.w;
+			word.z /= word.w;
+		}
+		cout << glm::to_string(p) << "\n";
+
 		cout << "X: " << x << "  Y:" << y 
-			<<"   Word Loca: (" <<wo.x  <<"," << wo.y<< ")\n";
+			<<"   Word Loca: (" << word.x  <<"," << word.y<< ")\n";
 		int a = 0;
 	}
 
+}
+
+void GL::Application::errorCalback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
+{
+	cout << "source: " << source << "  type:" << type
+		<< "   id:" << id << "     severity:" << severity << "     length:"<< length<<"   message:"<<string(message)<<"\n";
 }
